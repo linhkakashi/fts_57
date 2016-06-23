@@ -20,4 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  static_pages:
+    welcome: "Welcome to the FTS"
+    introduction: "This is second project"
+    project_name: "FTS"
+    login: "Login"
+    home: "Home"
+    the: "The"
+    by: "by"
+    author_names: "Tran Linh"
