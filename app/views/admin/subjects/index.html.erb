@@ -1,0 +1,35 @@
+<% provide :title, t("title.all_subjects") %>
+<h1><%= t "title.all_subjects" %></h1>
+<%= link_to t("form.create"), new_admin_subject_path, class: "btn btn-lg btn-primary" %>
+</br>
+
+<div class="panel-body">
+  <table class="table">
+    <thead>
+      <th><%= t "subjects.name" %></th>
+      <th><%= t "subjects.created_at" %></th>
+      <th><%= t "subjects.update_at" %></th>
+      <th></th>
+    </thead>
+    <% @subjects.each do |subject| %>
+      <tr>
+        <td><%= subject.name %></td>
+        <td><%= subject.created_at.strftime t "time.type" %></td>
+        <td><%= subject.updated_at.strftime t "time.type" %></td>
+        <% if can? :manage, subject%>
+          <td class="text-center">
+            <%= link_to t("form.show"), admin_subject_path(subject),
+              class: "btn btn-primary subject_start" %>
+
+            <%= link_to t("form.update"), edit_admin_subject_path(subject),
+              class: "btn btn-primary subject_start"%>
+
+            <%= link_to t("form.delete"), admin_subject_path(subject), method: :delete,
+              data:{confirm: t("notice.delete_confirm")}, class: "btn btn-primary subject_start" %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<div class="text-center"><%= paginate @subjects %></div>
