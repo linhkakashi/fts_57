@@ -1,0 +1,21 @@
+<% provide :title, t("title.forgot_password") %>
+<h1><%= t "title.forgot_password" %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :post } do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="field">
+        <%= f.label :email %><br/>
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="actions margin-t-15">
+        <%= f.submit t("passwords.send_reset_password"), class: "btn btn-primary btn-md btn-block" %>
+      </div>
+    <% end %>
+
+    <%= render "users/shared/links" %>
+  </div>
+</div>

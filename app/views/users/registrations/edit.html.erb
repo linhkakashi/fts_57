@@ -1,0 +1,51 @@
+<% provide :title, t("registrations.edit") %>
+<h1><%= t "registrations.edit"%><%= resource_name.to_s.humanize %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put } do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="field">
+        <%= f.label :email %><br/>
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="field margin-t-10">
+        <%= f.label :name %><br/>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div><%= t "registrations.waiting" %><%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="field margin-t-10">
+        <%= f.label :password %><br/>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <div class="field margin-t-10">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <div class="field field margin-t-10">
+        <%= f.label :current_password %><br/>
+        <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <div class="actions margin-t-15">
+        <%= f.submit t("registrations.update"), class: "btn btn-primary btn-md btn-block" %>
+      </div>
+    <% end %>
+
+    <h3><%= t "registrations.cancel_my_account" %></h3>
+
+    <p><%= t "registrations.unhappy" %><%= button_to t("registrations.cancel_my_account"),
+      registration_path(resource_name), data: { confirm: t("registrations.confirmation") },
+      method: :delete %></p>
+
+    <%= link_to t("registrations.back"), :back %>
+  </div>
+</div>

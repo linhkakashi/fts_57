@@ -29,3 +29,27 @@ en:
     the: "The"
     by: "by"
     author_names: "Tran Linh"
+    logout: "Logout"
+  title:
+    change_password: "Change password"
+    forgot_password: "Forgot your password?"
+  passwords:
+    confirm_new_password: "Confirm new password"
+    change_my_password: "Change my password"
+    new_password: "New password"
+    send_reset_password: "Send me reset password instructions"
+  registrations:
+    edit: "Edit "
+    waiting: "Currently waiting confirmation for: "
+    update: "Update"
+    cancel_my_account: "Cancel my account"
+    confirmation: "Are you sure?"
+    back: "Back"
+    unhappy: "Unhappy? "
+    signup: "Sign up"
+  sessions:
+    login: "Log in"
+  link:
+    instructions: "Didn't receive confirmation instructions?"
+    not_instructions: "Didn't receive unlock instructions?"
+

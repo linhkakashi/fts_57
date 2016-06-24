@@ -1,0 +1,27 @@
+<% provide :title, t("title.change_password") %>
+<h1><%= t "title.change_password" %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :put } do |f| %>
+      <%= devise_error_messages! %>
+      <%= f.hidden_field :reset_password_token %>
+
+      <div class="field">
+        <%= f.label :password, t "passwords.new_password" %><br/>
+        <%= f.password_field :password, autofocus: true, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <div class="field margin-t-10">
+        <%= f.label :password_confirmation, t "passwords.confirm_new_password" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <div class="actions margin-t-15">
+        <%= f.submit t("passwords.change_my_password"), class: "btn btn-primary btn-md btn-block" %>
+      </div>
+    <% end %>
+
+    <%= render "users/shared/links" %>
+  </div>
+</div>
