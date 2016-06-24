@@ -33,6 +33,10 @@ en:
   title:
     change_password: "Change password"
     forgot_password: "Forgot your password?"
+    all_subjects: "All subjects"
+    create_subject: "Create subject"
+    update_subject: "Update subject"
+    subject_info: "Subject information"
   passwords:
     confirm_new_password: "Confirm new password"
     change_my_password: "Change my password"
@@ -52,4 +56,22 @@ en:
   link:
     instructions: "Didn't receive confirmation instructions?"
     not_instructions: "Didn't receive unlock instructions?"
-
+  subjects:
+    name: "Name"
+    created_at: "Created at"
+    update_at: "Updated at"
+  time:
+    type: "%d/%m/%Y"
+  form:
+    show: "Show"
+    create: "Create"
+    update: "Update"
+    delete: "Delete"
+  notice:
+    delete_confirm: "Are you sure?"
+    create_subject_success: "Create subject success!"
+    update_subject_success: "Update subject success!"
+    deleted_subject_success: "Delete subject success!"
+  error:
+    sentence_content: "The form contains "
+    er: "error"
