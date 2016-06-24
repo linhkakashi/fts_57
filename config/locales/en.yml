@@ -37,6 +37,8 @@ en:
     create_subject: "Create subject"
     update_subject: "Update subject"
     subject_info: "Subject information"
+    all_user: "All users"
+    user_info: "User information"
   passwords:
     confirm_new_password: "Confirm new password"
     change_my_password: "Change my password"
@@ -60,6 +62,11 @@ en:
     name: "Name"
     created_at: "Created at"
     update_at: "Updated at"
+  users:
+    name: "Name"
+    email: "Email"
+    created_at: "Created at"
+    update_at: "Updated at"
   time:
     type: "%d/%m/%Y"
   form:
@@ -72,6 +79,9 @@ en:
     create_subject_success: "Create subject success!"
     update_subject_success: "Update subject success!"
     deleted_subject_success: "Delete subject success!"
+    deleted_user_success: "Delete user success!"
+    pls_admin: "Please login with admin account!"
+    pls_login: "Please login!"
   error:
     sentence_content: "The form contains "
     er: "error"
