@@ -1,0 +1,41 @@
+<% provide :title, t("questions.all_questions") %>
+<h1><%= t "questions.all_questions" %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for [:admin, @question] do |f| %>
+      <%= render "shared/error_messages", object: @question %>
+      <div>
+        <div class="panel panel-info">
+          <div class="panel panel-heading">
+            <h3 class="panel-title text-center"><%= t "questions.question" %></h3>
+          </div>
+          <div class="panel-body">
+            <div>
+              <%= f.label :subject_id, t("questions.subject") %>
+              <%= f.collection_select :subject_id, @subjects, :id, :name %>
+            </div>
+
+            <div>
+              <%= f.label :content, t("questions.question") %>
+              <%= f.text_area :content, class: "form-control" %>
+            </div>
+
+            <div>
+              <%= f.label :question_type, t("questions.question_type") %>
+              <%= f.select :question_type, Question.question_types.keys %>
+            </div>
+          </div>
+        </div>
+        <div class="choice">
+           <%= render "choice_form", f: f %>
+        </div>
+
+        <div class="text">
+          <%= render "text_form", f: f %>
+        </div>
+      <%= f.submit t("form.create"), class: "btn btn-primary" , id: :create_question %>
+      </div>
+    <% end %>
+  </div>
+</div>
