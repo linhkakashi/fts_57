@@ -1,0 +1,32 @@
+<% provide :title, t("title.all_user") %>
+<h1><%= t "title.all_user" %></h1>
+
+<div class="panel-body">
+  <table class="table">
+    <thead>
+      <th><%= t "users.name" %></th>
+      <th><%= t "users.email" %></th>
+      <th><%= t "users.created_at" %></th>
+      <th><%= t "users.update_at" %></th>
+      <th></th>
+    </thead>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %>
+        <td><%= user.created_at.strftime t "time.type" %></td>
+        <td><%= user.updated_at.strftime t "time.type" %></td>
+        <td class="text-center">
+          <% if can? :read, user %>
+            <%= link_to t("form.show"), admin_user_path(user), class: "btn btn-primary subject_start" %>
+          <% end %>
+          <% if can? :delete, user %>
+            <%= link_to t("form.delete"), admin_user_path(user), method: :delete,
+              data:{confirm: t("notice.delete_confirm")}, class: "btn btn-primary subject_start" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<div class="text-center"><%= paginate @users %></div>
