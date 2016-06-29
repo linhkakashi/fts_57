@@ -1,0 +1,54 @@
+<% provide :title, t("exam.exam") %>
+<h1><%= t "exam.exam" %></h1>
+<%= form_for @exam do |f| %>
+  <div><%= render "shared/error_messages", object: @exam %></div>
+  <%= f.label :subject_id %>
+  <%= f.select :subject_id, @subjects.map{|s| [s.name, s.id]}, class: "form-control" %>
+  <%= f.hidden_field :status, value: :start %>
+
+  <%= f.submit t("form.create"), class: "btn btn-primary" %>
+<% end %>
+<hr>
+<div class="panel-body">
+  <table class="table">
+    <thead>
+      <th><%= t "exam.create_date" %></th>
+      <th><%= t "exam.subject" %></th>
+      <th><%= t "exam.status" %></th>
+      <th><%= t "exam.duration" %></th>
+      <th><%= t "exam.question_number" %></th>
+      <th><%= t "exam.spent_time" %></th>
+      <th><%= t "exam.score" %></th>
+      <th></th>
+    </thead>
+    <% @exams.each do |exam| %>
+      <tr>
+        <td><%= exam.created_at.strftime t "time.type" %></td>
+        <td><%= exam.subject.name %>
+        <td>
+          <% if exam.start? %>
+            <span class="label label-primary"><%= exam.status %></span>
+          <% elsif exam.testing? %>
+            <span class="label label-warning"><%= exam.status %></span>
+          <% elsif exam.unchecked? %>
+            <span class="label label-info"><%= exam.status %></span>
+          <% else %>
+            <span class="label label-success"><%= exam.status %></span>
+          <% end %>
+        </td>
+        <td><%= exam.duration %></td>
+        <td><%= exam.question_number %></td>
+        <td><%= exam.start? ? Settings.TIME_DEFAUT : exam.spent_time %>
+        <td><%= exam.score %></td>
+        <td class="text-center">
+          <% if exam.start? %>
+            <%= link_to t("exam.start"), "#", class: "btn btn-success" %>
+          <% else %>
+            <%= link_to t("exam.view"), "#", class: "btn btn-primary" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<div class="text-center"><%= paginate @exams %></div>

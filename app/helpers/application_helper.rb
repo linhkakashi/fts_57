@@ -19,4 +19,13 @@ module ApplicationHelper
     f.hidden_field(:_destroy) + link_to(name, "javascript:void(0)",
       onclick: "remove_fields(this)", class: :remove_answer)
   end
+
+  def spend_time exam
+    time = if exam.time_end - exam.time_start < exam.duration * 60
+      exam.time_end - exam.time_start
+    else
+      exam.duration * 60
+    end
+    Time.at(time).utc.strftime Settings.TIME_FORMAT
+  end
 end
