@@ -1,0 +1,39 @@
+<h1><%= @title %></h1>
+<%= link_to t("questions.create"), new_admin_subject_path, class: "glyphicon glyphicon-plus" %>
+</br>
+
+<div class="panel-body">
+  <table class="table">
+    <thead>
+      <th class="text-center"><%= t "questions.index" %></th>
+      <th><%= t "questions.question" %></th>
+      <th><%= t "questions.subject" %></th>
+      <th><%= t "questions.type" %></th>
+      <th><%= t "questions.state" %></th>
+      <th></th>
+    </thead>
+    <% @questions.each_with_index do |question, index| %>
+      <tr>
+        <td class="text-center"><%= index+1 %></td>
+        <td><%= question.content %></td>
+        <td><%= question.subject.name %></td>
+        <td><%= question.question_type %></td>
+        <td><%= question.state %></td>
+
+        <% if can? :manage, question %>
+          <td class="text-center">
+            <%= link_to t("questions.show"), "#",
+              class: "btn btn-primary" %>
+
+            <%= link_to t("questions.update"), "#",
+              class: "btn btn-primary" %>
+
+            <%= link_to t("questions.delete"), "#", method: :delete,
+              data:{confirm: t("notice.delete_confirm")}, class: "btn btn-primary" %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<div class="text-center"><%= paginate @questions %></div>
