@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623081352) do
+ActiveRecord::Schema.define(version: 20160701030832) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "content"
@@ -38,12 +38,15 @@ ActiveRecord::Schema.define(version: 20160623081352) do
   create_table "exams", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "subject_id"
+    t.integer  "question_number"
     t.integer  "status"
-    t.float    "duration"
-    t.float    "spend_time"
+    t.integer  "duration"
+    t.integer  "spend_time"
     t.integer  "score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "time_start"
+    t.integer  "time_end"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_index "exams", ["subject_id"], name: "index_exams_on_subject_id"
@@ -83,6 +86,8 @@ ActiveRecord::Schema.define(version: 20160623081352) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
