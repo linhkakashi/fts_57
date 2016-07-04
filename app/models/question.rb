@@ -12,5 +12,6 @@ class Question < ActiveRecord::Base
   accepts_nested_attributes_for :answers, allow_destroy: true,
     reject_if: lambda{|answer| answer[:content].blank?}
 
-  scope :contributed_by, ->user{where(user_id: user.id).order(created_at: :desc)}
+  scope :contributed_by, ->user{where(user_id: user.id).order created_at: :desc}
+  scope :accepted, -> {where state: :accept}
 end
