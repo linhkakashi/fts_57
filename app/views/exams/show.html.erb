@@ -17,7 +17,8 @@
       <h4><%= t ".time_remain" %></h4>
       <p id="clock" data-time-limit="<%= @exam.duration %>"
         data-time-start="<%= @time_start %>"
-        data-time-now="<%= Time.now.to_i %>"></p>
+        data-time-now="<%= Time.now.to_i %>"
+        data-status="<%= @exam.status %>"></p>
     </div>
   </div>
 </div>

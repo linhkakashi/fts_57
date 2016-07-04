@@ -127,5 +127,7 @@ en:
     start: "Start"
     save: "Save"
     finish: "Finish"
+    save_question: "Save questions!"
+    save_question_failed: "Save question failed!"
   error:
     need_questions: "needed add more question!"
