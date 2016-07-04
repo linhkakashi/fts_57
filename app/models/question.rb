@@ -13,5 +13,5 @@ class Question < ActiveRecord::Base
     reject_if: lambda{|answer| answer[:content].blank?}
 
   scope :contributed_by, ->user{where(user_id: user.id).order created_at: :desc}
-  scope :accepted, -> {where state: :accept}
+  scope :accepted, -> {where state: 0}
 end

@@ -1,0 +1,10 @@
+<%= form_for @exam do |f| %>
+  <ol>
+    <%= f.fields_for :exam_questions do |exam_question| %>
+      <%= render "question", f: exam_question %>
+    <% end %>
+  </ol>
+  <%= f.submit t("exam.save"), class: "btn btn-danger col-md-3 pull-left" %>
+  <%= f.submit t("exam.finish"), class: "btn btn-primary col-md-3 pull-right",
+    id: "finish" %>
+<% end %>

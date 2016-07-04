@@ -1,0 +1,21 @@
+<div class="row">
+  <li><strong><%= f.object.question.content %></strong></li>
+  <% if f.object.question.single_choice? %>
+    <% f.object.question.answers.each do |answer| %>
+      <label class="radio">
+        <%= f.radio_button :answer_id, answer.id %>
+        <%= answer.content %><br/>
+      </label>
+    <% end %>
+  <% elsif f.object.question.multiple_choice? %>
+    <% f.object.question.answers.each do |answer| %>
+      <label class="radio">
+        <%= f.check_box :answer, {multiple: true}, answer.id, false %>
+        <%= answer.content %><br/>
+      </label>
+    <% end %>
+  <% elsif f.object.question.text? %>
+    <%= f.text_field :answer %>
+  <% end %>
+</div>
+<br>

@@ -125,5 +125,7 @@ en:
     create_exam_failed: "Create exam failed!"
     subject_no_question: "Subject no questions"
     start: "Start"
+    save: "Save"
+    finish: "Finish"
   error:
     need_questions: "needed add more question!"

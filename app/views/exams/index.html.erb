@@ -38,13 +38,13 @@
         </td>
         <td><%= exam.duration %></td>
         <td><%= exam.question_number %></td>
-        <td><%= exam.start? ? Settings.TIME_DEFAUT : exam.spent_time %>
+        <td><%= exam.start? ? Settings.TIME_DEFAUT : 0 %>
         <td><%= exam.score %></td>
         <td class="text-center">
           <% if exam.start? %>
-            <%= link_to t("exam.start"), "#", class: "btn btn-success" %>
+            <%= link_to t("exam.start"), exam, class: "btn btn-success" %>
           <% else %>
-            <%= link_to t("exam.view"), "#", class: "btn btn-primary" %>
+            <%= link_to t("exam.view"), exam, class: "btn btn-primary" %>
           <% end %>
         </td>
       </tr>

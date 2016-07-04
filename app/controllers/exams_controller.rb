@@ -1,4 +1,6 @@
 class ExamsController < ApplicationController
+  before_action :logged_in_user
+  before_action :load_exam, only: [:show]
   load_and_authorize_resource
 
   def index
@@ -18,6 +20,16 @@ class ExamsController < ApplicationController
     redirect_to exams_path
   end
 
+  def show
+    if @exam.start?
+      @time_start = Time.now.to_i
+      @exam.update_attributes time_start: @time_start, status: :testing
+    else
+      @exam_questions = @exam.exam_questions
+      @time_start = @exam.time_start
+    end
+  end
+
   private
   def exam_params
     @subject = Subject.find params[:exam][:subject_id]
@@ -27,5 +39,9 @@ class ExamsController < ApplicationController
       Settings.WITH_20_MINUTES
     end
     params.require(:exam).permit :subject_id, :duration, :status
+  end
+
+  def load_exam
+    @exam = Exam.find_by id: params[:id]
   end
 end
