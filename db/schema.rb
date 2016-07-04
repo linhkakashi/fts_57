@@ -42,10 +42,10 @@ ActiveRecord::Schema.define(version: 20160701030832) do
     t.integer  "status"
     t.integer  "duration"
     t.integer  "score"
-    t.integer  "time_start"
-    t.integer  "time_end"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "time_start",      default: 0
+    t.integer  "time_end",        default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "exams", ["subject_id"], name: "index_exams_on_subject_id"

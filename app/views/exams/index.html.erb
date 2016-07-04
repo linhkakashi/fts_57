@@ -38,7 +38,7 @@
         </td>
         <td><%= exam.duration %></td>
         <td><%= exam.question_number %></td>
-        <td><%= exam.start? ? Settings.TIME_DEFAUT : 0 %>
+        <td><%= exam.start? ? Settings.TIME_DEFAUT : spend_time(exam) %>
         <td><%= exam.score %></td>
         <td class="text-center">
           <% if exam.start? %>

@@ -7,8 +7,8 @@ class CreateExams < ActiveRecord::Migration
       t.integer :status
       t.integer :duration
       t.integer :score
-      t.integer :time_start
-      t.integer :time_end
+      t.integer :time_start, default: 0
+      t.integer :time_end, default: 0
 
       t.timestamps null: false
     end
