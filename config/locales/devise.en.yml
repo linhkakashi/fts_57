@@ -60,3 +60,11 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  notice:
+    delete_confirm: "Are you sure?"
+    create_subject_success: "Create subject success!"
+    update_subject_success: "Update subject success!"
+    deleted_subject_success: "Delete subject success!"
+    deleted_user_success: "Delete user success!"
+    pls_admin: "Please login with admin account!"
+    pls_login: "Please login!"

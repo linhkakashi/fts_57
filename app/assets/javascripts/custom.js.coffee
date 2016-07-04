@@ -9,7 +9,7 @@
   $(ip).val 'true'
   $(link).closest('.nested-fields').hide()
 
-$(document).ready ->
+$(document).on 'ready page:load', ->
   $('#question_question_type').change ->
     if $('#question_question_type').val() == 'text'
       $('.choice').hide()
