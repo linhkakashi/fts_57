@@ -1,0 +1,23 @@
+<div class="row">
+  <p><%= @exam.created_at.strftime Settings.DATE_FORMAT %></p>
+  <h1><%= @exam.subject.name %></h1>
+</div>
+<hr>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-1">
+  <% if @exam.testing? %>
+    <%= render "exam_form" %>
+  <% else %>
+    <%= render "result_form" %>
+  <% end %>
+  </div>
+  <div class="col-md-2 col-md-offset-1">
+    <div class="timer">
+      <h4><%= t ".time_remain" %></h4>
+      <p id="clock" data-time-limit="<%= @exam.duration %>"
+        data-time-start="<%= @time_start %>"
+        data-time-now="<%= Time.now.to_i %>"></p>
+    </div>
+  </div>
+</div>

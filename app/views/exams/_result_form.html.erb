@@ -1,0 +1,27 @@
+<div class="row">
+  <ol>
+    <% @exam_questions.each do |exam_question| %>
+      <li>
+        <% question = exam_question.question %>
+        <strong><%= question.content %></strong><br/>
+      </li>
+      <% if question.single_choice? %>
+        <% question.answers.each do |answer| %>
+          <span class="input-inline">
+            <%= radio_button_tag "question#{question.id}", answer.id,
+            answer.content.include?(answer.id.to_s), {disabled: true} %>
+            <%= answer.content %><br/>
+          </span>
+        <% end %>
+      <% elsif question.multiple_choice? %>
+        <% question.question_options.each do |answer| %>
+          <span class="input-inline">
+            <%= check_box_tag "question#{question.id}", answer.id,
+            answer.content.include?(answer.id.to_s), {disabled: true} %>
+            <%= answer.content %><br/>
+          </span>
+        <% end %>
+      <% end %>
+    <% end %>
+  </ol>
+</div>
