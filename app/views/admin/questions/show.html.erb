@@ -1,0 +1,37 @@
+<% provide :title, t("title.question") %>
+<h1><%= @question.content %></h1>
+</br>
+<div><strong><%= t "questions.answer"%></strong></div>
+<div class="panel-body">
+  <table class="table">
+    <% if @question.text? %>
+      <thead>
+        <th><%= t "answer.content" %></th>
+      </thead>
+      <tr>
+        <td><%= @question.answers.first.content %></td>
+      </tr>
+    <% else %>
+      <thead>
+        <th class="text-center"><%= t "questions.index" %></th>
+        <th><%= t "answer.content" %></th>
+        <th><%= t "answer.correct" %></th>
+      </thead>
+      <% @question.answers.each_with_index do |answer, index| %>
+        <tr>
+          <td class="text-center"><%= index+1 %></td>
+          <td><%= answer.content %></td>
+          <td><%= answer.is_correct %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+  <% if @question.waiting? %>
+    <div class="magrin-top-15">
+      <%= form_for [:admin, @question] do |f| %>
+        <%= render "shared/error_messages", object: @question %>
+        <%= f.submit t("form.accept_question"), class: "btn btn-primary magrin-top-15" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

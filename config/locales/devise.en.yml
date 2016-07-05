@@ -68,3 +68,5 @@ en:
     deleted_user_success: "Delete user success!"
     pls_admin: "Please login with admin account!"
     pls_login: "Please login!"
+    delete_success: "Delete successful!"
+    update_question_success: "Update question success"

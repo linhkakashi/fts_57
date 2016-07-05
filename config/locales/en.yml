@@ -42,6 +42,7 @@ en:
     subject_info: "Subject information"
     all_user: "All users"
     user_info: "User information"
+    question: "Question"
   passwords:
     confirm_new_password: "Confirm new password"
     change_my_password: "Change my password"
@@ -80,6 +81,7 @@ en:
     update: "Update"
     delete: "Delete"
     update_score: "Update score"
+    accept_question: "Accept question"
   notice:
     delete_confirm: "Are you sure?"
     create_subject_success: "Create subject success!"
@@ -88,6 +90,7 @@ en:
     deleted_user_success: "Delete user success!"
     pls_admin: "Please login with admin account!"
     pls_login: "Please login!"
+    update_question_success: "Update question success"
   error:
     sentence_content: "The form contains "
     er: "error"
@@ -140,3 +143,6 @@ en:
     current_score: "Current score %{current_score}"
   error:
     need_questions: "needed add more question!"
+  answer:
+    content: "Content"
+    correct: "Correct?"
