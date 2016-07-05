@@ -12,3 +12,4 @@ STATUS_TESTING: "testing"
 STATUS_UNCHECKED: "unchecked"
 STATUS_CHECKED: "checked"
 FINISH: "Finish"
+STATUS_CHECKED: 3
