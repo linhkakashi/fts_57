@@ -30,6 +30,8 @@ en:
     by: "by"
     author_names: "Tran Linh"
     logout: "Logout"
+    manage_question: "Manage question"
+    suggest_question: "Suggest question"
   title:
     change_password: "Change password"
     forgot_password: "Forgot your password?"
@@ -107,6 +109,8 @@ en:
     answer: "Answer"
     options: "Options"
     delete: "Delete"
+    edit_question: "Edit question"
+    create_question: "Create question"
   notice:
     create_question_success: "Create question success!"
     delete_confirm: "Are you sure?"
