@@ -3,13 +3,6 @@ class ExamsController < ApplicationController
   before_action :load_exam, only: [:show]
   load_and_authorize_resource
 
-  def index
-    @subjects = Subject.all
-    @exam = Exam.new
-    @exams = current_user.exams.order(created_at: :desc).page(params[:page])
-      .per Settings.PAGE_SIZE
-  end
-
   def create
     add_duration_to_exam
     @exam = current_user.exams.build exam_params
@@ -18,7 +11,7 @@ class ExamsController < ApplicationController
     else
       flash[:danger] = t "exam.create_exam_failed"
     end
-    redirect_to exams_path
+    redirect_to root_path
   end
 
   def show
@@ -39,7 +32,7 @@ class ExamsController < ApplicationController
     else
       flash[:danger] =  t "exam.save_question_failed"
     end
-    redirect_to exams_path
+    redirect_to root_path
   end
 
   private

@@ -6,6 +6,7 @@
         <li><%= link_to t("static_pages.home"), root_path %></li>
         <% if user_signed_in? %>
           <% if current_user.is_admin %>
+            <li><%= link_to t("static_pages.manage_exams"), admin_exams_path %></li>
             <li><%= link_to t("static_pages.manage_question"), admin_questions_path %></li>
           <% else %>
             <li><%= link_to t("static_pages.suggest_question"), new_question_path %></li>

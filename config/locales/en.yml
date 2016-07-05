@@ -32,6 +32,7 @@ en:
     logout: "Logout"
     manage_question: "Manage question"
     suggest_question: "Suggest question"
+    manage_exams: "Manage exams"
   title:
     change_password: "Change password"
     forgot_password: "Forgot your password?"
