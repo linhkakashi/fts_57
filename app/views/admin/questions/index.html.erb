@@ -18,18 +18,19 @@
         <td><%= question.content %></td>
         <td><%= question.subject.name %></td>
         <td><%= question.question_type %></td>
-        <td><%= question.state %></td>
-
+        <% if question.waiting? %>
+          <td><span class="false_answer"><%= question.state %></span></td>
+        <% else %>
+          <td><%= question.state %></td>
+        <% end %>
         <% if can? :manage, question %>
           <td class="text-center">
-            <%= link_to t("questions.show"), "#",
+            <%= link_to t("questions.show"), admin_question_path(question),
               class: "btn btn-primary" %>
 
-            <%= link_to t("questions.update"), "#",
+            <%= link_to t("questions.delete"), admin_question_path(question),
+              method: :delete, data:{confirm: t("notice.delete_confirm")},
               class: "btn btn-primary" %>
-
-            <%= link_to t("questions.delete"), "#", method: :delete,
-              data:{confirm: t("notice.delete_confirm")}, class: "btn btn-primary" %>
           </td>
         <% end %>
       </tr>

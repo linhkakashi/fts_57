@@ -24,6 +24,24 @@ class Admin::QuestionsController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def update
+    if @question.update_attributes accept_question_params
+      flash[:success] = t "notice.update_question_success"
+      redirect_to admin_questions_path
+    else
+      redirect_to @question
+    end
+  end
+
+  def destroy
+    @question.destroy
+    flash[:success] = t "notice.delete_success"
+    redirect_to admin_questions_path
+  end
+
   private
   def question_params
     question = params[:question]
@@ -36,5 +54,10 @@ class Admin::QuestionsController < ApplicationController
 
     params.require(:question).permit :content, :state, :question_type, :user_id,
       :subject_id, :state, answers_attributes: [:id, :content, :is_correct, :_destroy]
+  end
+
+  def accept_question_params
+    params[:state] = Settings.ACCEPT
+    params.permit :state
   end
 end

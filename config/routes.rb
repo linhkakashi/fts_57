@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     root "subjects#index"
     resources :subjects
     resources :users, only: [:index, :show, :destroy]
-    resources :questions, only: [:index, :new, :create]
+    resources :questions
     resources :exams, only: [:index, :show, :update]
   end
 end
