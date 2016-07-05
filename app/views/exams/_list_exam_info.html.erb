@@ -1,5 +1,3 @@
-<% provide :title, t("exam.exam") %>
-<h1><%= t "exam.exam" %></h1>
 <%= form_for @exam do |f| %>
   <div><%= render "shared/error_messages", object: @exam %></div>
   <%= f.label :subject_id %>
