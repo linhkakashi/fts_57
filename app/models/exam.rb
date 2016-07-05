@@ -12,6 +12,14 @@ class Exam < ActiveRecord::Base
 
   accepts_nested_attributes_for :exam_questions
 
+  def caculate_score
+    score = if self.score.nil?
+      self.exam_questions.map(&:answer).map(&:is_correct).count true
+    else
+      exam.score
+    end
+  end
+
   private
   def create_questions
     self.questions = subject.questions.accepted.order("RANDOM()")

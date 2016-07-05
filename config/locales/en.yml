@@ -78,6 +78,7 @@ en:
     create: "Create"
     update: "Update"
     delete: "Delete"
+    update_score: "Update score"
   notice:
     delete_confirm: "Are you sure?"
     create_subject_success: "Create subject success!"
@@ -134,5 +135,7 @@ en:
     finish: "Finish"
     save_question: "Save questions!"
     save_question_failed: "Save question failed!"
+    manage: "Exam manage"
+    current_score: "Current score %{current_score}"
   error:
     need_questions: "needed add more question!"

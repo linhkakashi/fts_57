@@ -1,0 +1,64 @@
+<div class="row">
+  <p><%= @exam.created_at.strftime Settings.DATE_FORMAT %></p>
+  <h1><%= @exam.subject.name %></h1>
+</div>
+<hr>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-1">
+    <div class="row">
+      <ol>
+        <% @exam_questions.each do |exam_question| %>
+          <li>
+            <% question = exam_question.question %>
+            <strong><%= question.content %></strong><br/>
+          </li>
+          <% if question.single_choice? %>
+            <% question.answers.each do |answer| %>
+              <% if answer.is_correct %>
+                <span class="input-inline true_answer">
+                  <%= radio_button_tag "question#{question.id}", answer.id,
+                    (exam_question.answer_id == answer.id), {disabled: true} %>
+                  <%= answer.content %><br/>
+                </span>
+              <% elsif exam_question.answer_id == answer.id && !exam_question.answer.is_correct %>
+                <span class="input-inline false_answer">
+                  <%= radio_button_tag "question#{question.id}", answer.id,
+                    (exam_question.answer_id == answer.id), {disabled: true} %>
+                  <%= answer.content %><br/>
+                </span>
+              <% else %>
+                <span class="input-inline">
+                  <%= radio_button_tag "question#{question.id}", answer.id,
+                    (exam_question.answer_id == answer.id), {disabled: true} %>
+                  <%= answer.content %><br/>
+                </span>
+              <% end %>
+            <% end %>
+          <% elsif question.multiple_choice? %>
+            <% question.question_options.each do |answer| %>
+              <span class="input-inline">
+                <%= check_box_tag "question#{question.id}", answer.id,
+                (exam_question.answer_id == answer.id), {disabled: true} %>
+                <%= answer.content %><br/>
+              </span>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ol>
+      <div class="magrin-top-15">
+        <%= t "exam.current_score", current_score: @current_score %>
+      </div>
+      <div class="magrin-top-15">
+        <%= form_for [:admin, @exam] do |f| %>
+          <%= render "shared/error_messages", object: @exam %>
+            <div>
+              <%= f.label :score %>
+              <%= f.number_field :score, min: 0, max: 20 %>
+            </div>
+          <%= f.submit t("form.update_score"), class: "btn btn-primary magrin-top-15" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

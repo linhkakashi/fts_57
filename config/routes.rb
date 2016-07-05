@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     resources :subjects
     resources :users, only: [:index, :show, :destroy]
     resources :questions, only: [:index, :new, :create]
+    resources :exams, only: [:index, :show, :update]
   end
 end
