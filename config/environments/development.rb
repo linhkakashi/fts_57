@@ -11,10 +11,9 @@ Rails.application.configure do
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
-  config.action_controller.perform_caching = false
+  config.action_controller.perform_caching = true
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -35,8 +34,22 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
-  config.action_mailer.default_url_options = {host: "localhost", port: 3000}
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.active_job.queue_adapter = :sidekiq
+  config.action_mailer.default_url_options = {host: "localhost"}
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default charset: "utf-8"
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "localhost:3000",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV["gmail_username"],
+    password: ENV["gmail_password"]
+  }
 end

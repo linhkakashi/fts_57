@@ -141,8 +141,12 @@ en:
     save_question_failed: "Save question failed!"
     manage: "Exam manage"
     current_score: "Current score %{current_score}"
+    save_question: "Save question!"
+    save_question_failed: "Save question failed!"
   error:
     need_questions: "needed add more question!"
   answer:
     content: "Content"
     correct: "Correct?"
+  email:
+    result_exam: "Exam result"

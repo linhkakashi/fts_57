@@ -18,6 +18,7 @@ class Admin::ExamsController < ApplicationController
     else
       flash[:danger] =  t "exam.save_question_failed"
     end
+    SendEmailWorker.perform_async @exam.id
     redirect_to admin_exams_path
   end
 
