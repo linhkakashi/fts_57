@@ -12,6 +12,10 @@ class Exam < ActiveRecord::Base
 
   accepts_nested_attributes_for :exam_questions
 
+   scope :statistic_exam, -> (user_id, time_month){where("user_id = ? AND
+    created_at >= ? and created_at < ?", user_id, time_month.beginning_of_month,
+    time_month.end_of_month)}
+
   def caculate_score
     score = if self.score.nil?
       self.exam_questions.map(&:answer).map(&:is_correct).count true

@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= t "email.exam_name" %></th>
+          <th><%= t "email.score" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @exams.each do |exam| %>
+          <tr>
+           <td><%= exam.subject.name %></td>
+           <td><%= "#{exam.score}" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

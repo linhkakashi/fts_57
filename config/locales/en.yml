@@ -150,3 +150,7 @@ en:
     correct: "Correct?"
   email:
     result_exam: "Exam result"
+    static_exam: "Static exam"
+    exam_name: "Exam name"
+    score: "Score"
+    statistic_exam_desc: "Statistic exam destination"
