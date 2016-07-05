@@ -1,16 +1,20 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
-      omniauth_providers: [:facebook]
+      omniauth_providers: [:facebook, :google_oauth2]
 
   has_many :exams
   has_many :questions
 
   def self.from_omniauth auth
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
+      user.provider = auth.provider
       user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name
+      user.password = Devise.friendly_token[0,20]
+      user.uid = auth.uid
+      user.oauth_token = auth.credentials.token
+      user.save!
     end
   end
 

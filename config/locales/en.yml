@@ -56,6 +56,7 @@ en:
   sessions:
     login: "Log in"
     sign_in_facebook: "Sign in with Facebook"
+    sign_in_google: "Sign in with Google"
   link:
     instructions: "Didn't receive confirmation instructions?"
     not_instructions: "Didn't receive unlock instructions?"
