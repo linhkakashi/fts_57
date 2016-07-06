@@ -70,3 +70,5 @@ en:
     pls_login: "Please login!"
     delete_success: "Delete successful!"
     update_question_success: "Update question success"
+  exam:
+    exam_manage: "Exam manage"

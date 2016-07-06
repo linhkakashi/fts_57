@@ -14,7 +14,7 @@ class Exam < ActiveRecord::Base
 
   def caculate_score
     score = if self.score.nil?
-      self.exam_questions.map(&:answer).map(&:is_correct).count true
+      self.exam_questions.map(&:answer).select{|answer| answer.try(:is_correct)}.size
     else
       exam.score
     end
