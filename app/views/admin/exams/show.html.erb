@@ -36,12 +36,26 @@
               <% end %>
             <% end %>
           <% elsif question.multiple_choice? %>
-            <% question.question_options.each do |answer| %>
-              <span class="input-inline">
-                <%= check_box_tag "question#{question.id}", answer.id,
-                (exam_question.answer_id == answer.id), {disabled: true} %>
-                <%= answer.content %><br/>
-              </span>
+            <% question.answers.each do |answer| %>
+              <% if answer.is_correct %>
+                <span class="input-inline true_answer">
+                  <%= check_box_tag "question#{question.id}", answer.id,
+                   (exam_question.answer_id == answer.id), {disabled: true} %>
+                  <%= answer.content %><br/>
+                </span>
+              <% elsif exam_question.answer_id == answer.id && !exam_question.answer.is_correct %>
+                <span class="input-inline false_answer">
+                  <%= check_box_tag "question#{question.id}", answer.id,
+                    (exam_question.answer_id == answer.id), {disabled: true} %>
+                  <%= answer.content %><br/>
+                </span>
+              <% else %>
+                <span class="input-inline">
+                  <%= check_box_tag "question#{question.id}", answer.id,
+                    (exam_question.answer_id == answer.id), {disabled: true} %>
+                  <%= answer.content %><br/>
+                </span>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>

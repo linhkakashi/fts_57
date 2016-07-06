@@ -1,2 +1,9 @@
-<h1><%= t "mailer.result" %></h1>
-<%= t "mailer.result" %>
+<h1><%= t "mailer.result_exam" %></h1>
+<div class="row">
+  <div>
+    <strong><%= t "mailer.exam_name" %>: </strong><%= @exam.subject.name %>
+  </div>
+  <div>
+    <strong><%= t "mailer.your_score" %>: </strong><%= @exam.score %>
+  </div>
+</div>
