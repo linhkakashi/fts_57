@@ -3,6 +3,20 @@
   <%= f.label :answers, t("questions.options") %>
   <hr>
 </div>
+<div class="nested-fields">
+  <div class="col-md-12 nested_form">
+    <div class="row">
+      <div class="col-md-5">
+        <strong><%= t "questions.answer" %></strong>
+      </div>
+      <div class="col-md-2">
+        <strong><%= t "questions.correct" %></strong>
+      </div>
+      <div class="col-md-1">
+      </div>
+    </div>
+  </div>
+</div>
 <%= f.fields_for :answers do |answer| %>
   <%= render "admin/questions/answer_fields", f: answer %>
 <% end %>

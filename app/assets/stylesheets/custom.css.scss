@@ -112,6 +112,26 @@ footer {
   width: 120px
 }
 
+.icon_show_with_50 {
+  width: 50px;
+}
+
+.icon_edit_with_50 {
+  width: 50px;
+  color: #ffa726;
+  &:hover {
+    color: #ef6c00;
+  }
+}
+
+.icon_delete_with_50, .remove_answer {
+  width: 50px;
+  color: #ff7043;
+  &:hover {
+    color: #d84315;
+  }
+}
+
 #error_explanation {
   color: red;
   ul {
@@ -139,6 +159,6 @@ footer {
   background-color: red;
 }
 
-.magrin-top-15 {
-  margin-top: 15px
+.nested_form {
+  margin-top: 5px
 }

@@ -1,5 +1,8 @@
-<h1><%= @title %></h1>
-<%= link_to t("questions.create"), new_admin_question_path, class: "glyphicon glyphicon-plus" %>
+<h1><%= t "questions.all_questions" %></h1>
+<%= link_to new_admin_question_path do %>
+  <span class= "glyphicon glyphicon-plus"></span>
+  <%= t "questions.create_question" %>
+<% end %>
 </br>
 
 <div class="panel-body">
@@ -16,7 +19,9 @@
       <tr>
         <td class="text-center"><%= index+1 %></td>
         <td><%= question.content %></td>
-        <td><%= question.subject.name %></td>
+
+        <td><%= link_to "#{question.subject.name}",
+          admin_subject_path(question.subject) %></td>
         <td><%= question.question_type %></td>
         <% if question.waiting? %>
           <td><span class="false_answer"><%= question.state %></span></td>
@@ -25,12 +30,12 @@
         <% end %>
         <% if can? :manage, question %>
           <td class="text-center">
-            <%= link_to t("questions.show"), admin_question_path(question),
-              class: "btn btn-primary" %>
+            <%= link_to "", admin_question_path(question),
+              class: "glyphicon glyphicon-info-sign icon_show_with_50" %>
 
-            <%= link_to t("questions.delete"), admin_question_path(question),
+            <%= link_to "", admin_question_path(question),
               method: :delete, data:{confirm: t("notice.delete_confirm")},
-              class: "btn btn-primary" %>
+              class: "glyphicon glyphicon-trash icon_delete_with_50" %>
           </td>
         <% end %>
       </tr>

@@ -27,10 +27,10 @@
     <% end %>
   </table>
   <% if @question.waiting? %>
-    <div class="magrin-top-15">
+    <div class="margin-t-15">
       <%= form_for [:admin, @question] do |f| %>
         <%= render "shared/error_messages", object: @question %>
-        <%= f.submit t("form.accept_question"), class: "btn btn-primary magrin-top-15" %>
+        <%= f.submit t("form.accept_question"), class: "btn btn-primary margin-t-15" %>
       <% end %>
     </div>
   <% end %>
