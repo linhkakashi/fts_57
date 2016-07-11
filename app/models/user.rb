@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
       omniauth_providers: [:facebook, :google_oauth2]
 
+  validates :name, presence: true, length: {maximum: 45}
   has_many :exams
   has_many :questions
 
